@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <style>
         /* Guarantees 1-line nav tabs and well-proportioned mobile carousel */
         .nav-tab {
@@ -90,6 +90,39 @@
                 max-width: 85% !important;
                 max-height: 85% !important;
                 object-fit: contain !important;
+            }
+
+            /* Symmetrical 4x2 Brand Bar Matrix Grid on Mobile */
+            .brand-bar {
+                padding: 10px 8px !important;
+                margin-bottom: 24px !important;
+            }
+
+            .brand-track {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                align-items: center !important;
+                justify-items: center !important;
+                gap: 6px 4px !important;
+                width: 100% !important;
+            }
+
+            .brand-item {
+                width: 100% !important;
+                height: 42px !important;
+                min-height: 42px !important;
+                padding: 2px 4px !important;
+                box-sizing: border-box !important;
+            }
+
+            .brand-item img {
+                max-height: 26px !important;
+                max-width: 85% !important;
+            }
+
+            .brand-item.see-more {
+                font-size: 11px !important;
+                letter-spacing: 0px !important;
             }
         }
     </style>
