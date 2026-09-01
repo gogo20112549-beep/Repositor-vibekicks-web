@@ -9,9 +9,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=8">
     <style>
-        /* Guarantees 1-line nav tabs and well-proportioned mobile carousel */
+        /* Base Desktop Styles: Hide Hamburger Button on Desktop (>768px) */
+        .hamburger-btn {
+            display: none !important;
+        }
+
+        /* Tactile Active Click Micro-Animations for ALL Interactive Buttons */
+        button:active,
+        .action-btn-icon:active,
+        .nav-tab:active,
+        .brand-item:active,
+        .calendar-day-btn:active,
+        .carousel-arrow:active,
+        .product-card:active,
+        .modal-submit-btn:active,
+        .modal-close-btn:active,
+        .social-icon:active,
+        .footer-tab-link:active,
+        .footer-link:active {
+            transform: scale(0.92) translateY(1px) !important;
+            opacity: 0.85;
+            transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
         .nav-tab {
             white-space: nowrap !important;
             word-break: keep-all !important;
@@ -26,11 +48,9 @@
             transform: scale(1.75) !important;
         }
 
-        .hamburger-btn {
-            display: none !important;
-        }
-
+        /* Mobile & Tablet Responsive Optimizations (<=768px) */
         @media (max-width: 768px) {
+            /* Show Hamburger Button ONLY on Mobile Devices */
             .hamburger-btn {
                 display: flex !important;
             }
@@ -40,9 +60,30 @@
                 gap: 8px !important;
             }
 
+            .brand-logo {
+                height: 38px !important;
+            }
+
+            /* Compact & non-overflowing Header Action Buttons on Mobile */
+            .header-top-actions {
+                gap: 6px !important;
+                flex-shrink: 0 !important;
+            }
+
+            .action-btn-icon {
+                width: 32px !important;
+                height: 32px !important;
+                padding: 2px !important;
+            }
+
+            .action-btn-icon svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+
+            /* Smooth, non-cutoff Horizontal Scrollable Nav Tab Bar */
             .header-nav-row {
                 display: flex !important;
-                justify-content: space-between !important;
                 width: 100% !important;
                 padding: 4px 0 !important;
                 overflow-x: auto !important;
@@ -56,19 +97,19 @@
 
             .nav-links {
                 display: flex !important;
-                justify-content: space-between !important;
-                width: 100% !important;
-                gap: 4px !important;
+                width: max-content !important;
+                gap: 8px !important;
                 align-items: center !important;
-                padding: 0 !important;
+                padding: 0 4px !important;
                 flex-wrap: nowrap !important;
             }
 
             .nav-tab {
                 font-size: 11px !important;
                 font-weight: 700 !important;
-                letter-spacing: 0px !important;
-                padding-bottom: 4px !important;
+                letter-spacing: 0.5px !important;
+                padding: 4px 8px !important;
+                border-radius: 4px !important;
             }
 
             .carousel-container {

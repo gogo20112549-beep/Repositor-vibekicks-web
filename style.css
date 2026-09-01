@@ -113,14 +113,20 @@ button {
 }
 
 .action-btn-icon svg {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     fill: currentColor;
     pointer-events: none;
 }
 
-/* Hamburger menu lines */
+.action-btn-icon:active {
+    transform: scale(0.90) translateY(1px) !important;
+    opacity: 0.8;
+}
+
+/* Hamburger menu lines - HIDDEN on Desktop by default */
 .hamburger-btn {
+    display: none !important;
     flex-direction: column;
     gap: 5px;
 }
