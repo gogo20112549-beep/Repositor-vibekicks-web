@@ -952,18 +952,18 @@ button {
 
 @media (max-width: 768px) {
     .app-header {
-        padding: 14px 14px 8px 14px;
+        padding: 12px 14px 6px 14px;
         gap: 10px;
     }
 
-    /* Keep header navigation row visible and scrollable on mobile */
+    /* Header navigation row on mobile: clean 1-line tab bar */
     .header-nav-row {
         display: flex;
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 4px 0;
+        padding: 2px 0 4px 0;
     }
 
     .header-nav-row::-webkit-scrollbar {
@@ -971,27 +971,40 @@ button {
     }
 
     .nav-links {
-        gap: 20px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
         padding: 0 4px;
     }
 
     .nav-tab {
-        font-size: 14px;
+        font-size: 12px;
+        font-weight: 700;
         white-space: nowrap;
+        letter-spacing: 0.5px;
+        padding-bottom: 4px;
+        flex-shrink: 0;
     }
 
     .main-content {
         padding: 16px 12px;
     }
 
-    /* Carousel shoe image fix on mobile: 1 big card per slide */
+    /* Sleek, well-proportioned Carousel on mobile */
     .carousel-container {
-        height: 240px;
-        padding: 12px 8px;
+        height: 160px;
+        padding: 8px;
+        margin-bottom: 24px;
+    }
+
+    .carousel-arrow {
+        width: 32px;
+        height: 44px;
+        font-size: 20px;
     }
 
     .carousel-track-wrapper {
-        margin: 0 8px;
+        margin: 0 6px;
     }
 
     .carousel-slide {
@@ -1000,24 +1013,24 @@ button {
 
     .carousel-item-box {
         width: 100%;
-        height: 100%;
-        max-height: 200px;
-        padding: 12px;
+        height: 125px;
+        max-height: 125px;
+        padding: 10px 16px;
     }
 
-    .carousel-item-box:nth-child(2),
-    .carousel-item-box:nth-child(3) {
-        display: none;
+    .carousel-slide .carousel-item-box:nth-child(2),
+    .carousel-slide .carousel-item-box:nth-child(3) {
+        display: none !important;
     }
 
     .carousel-item-box img {
-        max-width: 95%;
-        max-height: 95%;
+        max-width: 85%;
+        max-height: 85%;
         object-fit: contain;
     }
 
     .calendar-bar {
-        padding: 10px 14px;
+        padding: 8px 12px;
     }
 
     .calendar-days-container {
@@ -1061,11 +1074,12 @@ button {
     }
 
     .carousel-container {
-        height: 230px;
+        height: 150px;
     }
 
     .carousel-item-box {
-        max-height: 190px;
+        height: 118px;
+        max-height: 118px;
     }
 
     .footer-links-group {
