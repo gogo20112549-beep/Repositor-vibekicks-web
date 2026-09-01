@@ -922,9 +922,9 @@ button {
     display: none;
 }
 
-/* Hamburger menu hide on Desktop, show on Mobile */
+/* Hamburger menu visible on all screens (Desktop & Mobile) */
 .hamburger-btn {
-    display: none;
+    display: flex;
 }
 
 /* Responsive Grid & Layout Styling */
@@ -956,13 +956,9 @@ button {
         gap: 12px;
     }
 
-    /* Hide desktop horizontal nav, show hamburger button */
+    /* Hide desktop horizontal nav */
     .header-nav-row {
         display: none;
-    }
-
-    .hamburger-btn {
-        display: flex;
     }
 
     .main-content {
