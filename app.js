@@ -263,11 +263,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const brandItems = document.querySelectorAll('.brand-item');
     brandItems.forEach(item => {
         item.addEventListener('click', () => {
-            brandItems.forEach(b => b.classList.remove('active'));
-            item.classList.add('active');
-
             const brand = item.getAttribute('data-brand') || 'all';
-            selectedBrand = brand;
+
+            if (item.classList.contains('active') && brand !== 'all') {
+                // Toggle off if already selected, reset to all
+                item.classList.remove('active');
+                selectedBrand = 'all';
+            } else {
+                brandItems.forEach(b => b.classList.remove('active'));
+                if (brand !== 'all') {
+                    item.classList.add('active');
+                }
+                selectedBrand = brand;
+            }
+
             renderPopularGrid(selectedBrand);
         });
     });
