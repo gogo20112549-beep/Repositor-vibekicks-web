@@ -1316,8 +1316,10 @@ button {
 }
 
 .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    z-index: 99999 !important;
 }
 
 .modal-card {

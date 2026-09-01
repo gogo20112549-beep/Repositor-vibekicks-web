@@ -1,6 +1,63 @@
 /* ==========================================================================
-   VIBEKICKS Core Application Logic
+   VIBEKICKS Core Application Logic & Global Window Action Handlers
    ========================================================================== */
+
+// Top-Level Global Window Functions for Instant Button Action Response
+window.openMailModal = function(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('mailModal');
+    if (modal) {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeMailModal = function(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('mailModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+};
+
+window.focusSearchInput = function(e) {
+    if (e) e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const searchInput = document.getElementById('searchInput');
+    const searchBarWrapper = document.getElementById('searchBarWrapper');
+    if (searchInput) {
+        searchInput.focus();
+        if (searchBarWrapper) {
+            searchBarWrapper.classList.add('search-highlight');
+            setTimeout(() => {
+                searchBarWrapper.classList.remove('search-highlight');
+            }, 1500);
+        }
+    }
+};
+
+window.openProfileModal = function(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('profileModal');
+    if (modal) {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeProfileModal = function(e) {
+    if (e) e.preventDefault();
+    const modal = document.getElementById('profileModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     
