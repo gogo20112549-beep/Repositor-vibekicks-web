@@ -179,9 +179,6 @@ button {
     justify-content: center;
     margin-top: 5px;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
 }
 
 .header-nav-row::-webkit-scrollbar {
@@ -964,18 +961,19 @@ button {
 
 @media (max-width: 768px) {
     .app-header {
-        padding: 12px 14px 6px 14px;
-        gap: 10px;
+        padding: 10px 12px 6px 12px;
+        gap: 8px;
     }
 
-    /* Header navigation row on mobile: clean 1-line tab bar */
+    /* Header navigation row on mobile: evenly spaced 1-line tab bar fitting screen */
     .header-nav-row {
         display: flex;
+        justify-content: space-between;
         width: 100%;
+        padding: 4px 0;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 2px 0 4px 0;
     }
 
     .header-nav-row::-webkit-scrollbar {
@@ -984,16 +982,19 @@ button {
 
     .nav-links {
         display: flex;
-        gap: 14px;
+        justify-content: space-between;
+        width: 100%;
+        gap: 6px;
         align-items: center;
-        padding: 0 4px;
+        padding: 0;
+        flex-wrap: nowrap;
     }
 
     .nav-tab {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        white-space: nowrap;
-        letter-spacing: 0.5px;
+        white-space: nowrap !important;
+        letter-spacing: 0px;
         padding-bottom: 4px;
         flex-shrink: 0;
     }
