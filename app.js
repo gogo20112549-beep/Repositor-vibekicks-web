@@ -215,7 +215,35 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ----------------------------------------------------------------------
-    // 4. SPA TAB ROUTING
+    // 4. MOBILE DRAWER & NAVIGATION
+    // ----------------------------------------------------------------------
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+    const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+
+    const openMobileDrawer = () => {
+        if (mobileNavDrawer && mobileNavBackdrop) {
+            mobileNavDrawer.classList.add('active');
+            mobileNavBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeMobileDrawer = () => {
+        if (mobileNavDrawer && mobileNavBackdrop) {
+            mobileNavDrawer.classList.remove('active');
+            mobileNavBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileDrawer);
+    if (mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+    if (mobileNavBackdrop) mobileNavBackdrop.addEventListener('click', closeMobileDrawer);
+
+    // ----------------------------------------------------------------------
+    // 5. SPA TAB ROUTING
     // ----------------------------------------------------------------------
     const switchTab = (tabId) => {
         tabViews.forEach(view => {
@@ -228,7 +256,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        navTabs.forEach(tab => {
+        // Update active class on all nav tabs (both desktop and mobile drawer)
+        const allNavTabs = document.querySelectorAll('.nav-tab');
+        allNavTabs.forEach(tab => {
             if (tab.getAttribute('data-tab') === tabId) {
                 tab.classList.add('active');
             } else {
@@ -236,10 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        closeMobileDrawer();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    navTabs.forEach(tab => {
+    const allNavTabs = document.querySelectorAll('.nav-tab');
+    allNavTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
             const tabId = tab.getAttribute('data-tab');
