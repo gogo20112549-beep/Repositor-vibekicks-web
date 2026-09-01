@@ -9,13 +9,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
     <style>
         /* Guarantees 1-line nav tabs and well-proportioned mobile carousel */
         .nav-tab {
             white-space: nowrap !important;
             word-break: keep-all !important;
             flex-shrink: 0 !important;
+        }
+
+        .vertical-card .product-img-wrapper img.scale-up {
+            transform: scale(1.65) !important;
+        }
+
+        .vertical-card:hover .product-img-wrapper img.scale-up {
+            transform: scale(1.75) !important;
         }
 
         @media (max-width: 768px) {
