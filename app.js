@@ -36,11 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const popularGridData = [
         { name: "Under Armour Curry 4 Retro 'White Gold' 2024", img: "assets/62ce2b30bd5aaa06182f95f4ad2796395390b317.png" },
+        { name: "Under Armour Curry 11 'Future Curry'", img: "assets/4bc07ecfdd06990702f33e4e040dfb41a823e1b6.png" },
         { name: "Nike Air Max Plus OG Premium 'Desert Monarch'", img: "assets/6c3b154af858adb32b2e52144cf06904887b196a.png" },
         { name: "Air Jordan 5 Retro 'Black Carolina / UNC' 2026", img: "assets/6f84c06aa00fb1d6f640323cbc3a6db0de29d632.png" },
+        { name: "Lil Yachty x Nike Air Force 1 Low 'Concrete Boys'", img: "assets/1134105683406059d0f862610f6a5073926d35c9.png" },
+        { name: "Nike Air Max Plus 'Triple Black'", img: "assets/dbeba915cc563cc8d3f5344820fdaf8b172511ef.png" },
         { name: "Puma LaFrancé 'Written in Chrome Pack - Black'", img: "assets/75ac6446fc35176e1d28a5d5882cfa4686398fad.png" },
+        { name: "Puma Suede XL 'Black White'", img: "assets/1e485e8f18da33140361b4af1cdd817f206f6b47.png" },
         { name: "BAPE x adidas Samba 'World Cup'", img: "assets/7866f78f228415b2aa46c4ed06e0be41e623f11b.png" },
-        { name: "Hellstar x adidas Superstar 'Hazy Orange'", img: "assets/7ab20d87f128c0a5b202a9086bc4e762b34817be.png" }
+        { name: "Hellstar x adidas Superstar 'Hazy Orange'", img: "assets/7ab20d87f128c0a5b202a9086bc4e762b34817be.png" },
+        { name: "adidas Wmns Samba OG 'Cheetah Pack'", img: "assets/1e485e8f18da33140361b4af1cdd817f206f6b47.png" },
+        { name: "ASICS Gel 1130 'Black Pure Silver'", img: "assets/da2a5312a571b219c18587653891d799f3b88cf0.png" },
+        { name: "DTLR x New Balance 740v2 'Night Moves'", img: "assets/400a496f8d72438bfb03b0d5bd7f22171ea84d11.png" },
+        { name: "Fila Stackhouse Spaghetti 'White Navy'", img: "assets/5ffe927a2e65d0a937c1878c5bb92a5c90182e60.png" }
     ];
 
     // ABOUT US VIEW STAFF CHOICES
@@ -168,6 +176,45 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     };
 
+    let selectedBrand = 'all';
+
+    const renderPopularGrid = (brand = selectedBrand) => {
+        popularGrid.replaceChildren();
+
+        const filteredItems = popularGridData.filter(item => {
+            if (!brand || brand === 'all') return true;
+            const itemName = item.name.toLowerCase();
+            const filterBrand = brand.toLowerCase();
+
+            if (filterBrand === 'nike') {
+                return itemName.includes('nike') || itemName.includes('jordan');
+            }
+            if (filterBrand === 'new balance') {
+                return itemName.includes('new balance') || itemName.includes('balance');
+            }
+            if (filterBrand === 'under armour') {
+                return itemName.includes('under armour') || itemName.includes('curry');
+            }
+            return itemName.includes(filterBrand);
+        });
+
+        if (filteredItems.length === 0) {
+            const noMatchMsg = document.createElement('div');
+            noMatchMsg.className = 'no-brand-items';
+            noMatchMsg.style.gridColumn = '1 / -1';
+            noMatchMsg.style.padding = '40px 20px';
+            noMatchMsg.style.textAlign = 'center';
+            noMatchMsg.style.fontWeight = '600';
+            noMatchMsg.style.color = 'var(--text-muted)';
+            noMatchMsg.textContent = `No ${brand.toUpperCase()} shoes found in current catalog.`;
+            popularGrid.appendChild(noMatchMsg);
+        } else {
+            filteredItems.forEach(item => {
+                popularGrid.appendChild(createHorizontalCard(item));
+            });
+        }
+    };
+
     const renderAllViews = () => {
         // Clear all grids safely
         newReleasesGrid.replaceChildren();
@@ -193,10 +240,8 @@ document.addEventListener('DOMContentLoaded', () => {
             newReleasesGrid.appendChild(createVerticalCard(homeGrid[1]));
         }
 
-        // 2. Popular Grid - Horizontal Cards
-        popularGridData.forEach(item => {
-            popularGrid.appendChild(createHorizontalCard(item));
-        });
+        // 2. Popular Grid - Filtered by Brand
+        renderPopularGrid(selectedBrand);
 
         // 3. About Us Staff Choices - Vertical Cards
         staffChoices.forEach(item => {
@@ -213,6 +258,19 @@ document.addEventListener('DOMContentLoaded', () => {
             contactGrid.appendChild(createVerticalCard(item));
         });
     };
+
+    // Brand Bar Filtering Click Listeners
+    const brandItems = document.querySelectorAll('.brand-item');
+    brandItems.forEach(item => {
+        item.addEventListener('click', () => {
+            brandItems.forEach(b => b.classList.remove('active'));
+            item.classList.add('active');
+
+            const brand = item.getAttribute('data-brand') || 'all';
+            selectedBrand = brand;
+            renderPopularGrid(selectedBrand);
+        });
+    });
 
     // ----------------------------------------------------------------------
     // 4. MOBILE DRAWER & NAVIGATION
