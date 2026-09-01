@@ -263,13 +263,13 @@
 
 ## 11. ข้อมูลผู้พัฒนา (Developer Information)
 
-* **ชื่อ-นามสกุล / ทีมผู้พัฒนา**: VIBEKICKS Development Team
+* **ชื่อ-นามสกุล / ทีมผู้พัฒนา**: นายณัชพล จิตรผูก สทธ.2/4 เลขที่ 68319100062
 * **GitHub**: [@gogo20112549-beep](https://github.com/gogo20112549-beep)
 * **โครงการ**: VIBEKICKS - Web Application Development Project
-* **ปีที่พัฒนา**: 2026
+* **ปีที่พัฒนา**: 2569
 
 ---
 
 <div align="center">
-  <sub>Built with passion for sneakers & modern web standards. © 2026 VIBEKICKS</sub>
+  <sub>Built with passion for sneakers & modern web standards. © 2569 VIBEKICKS</sub>
 </div>
