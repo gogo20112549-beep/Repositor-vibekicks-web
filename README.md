@@ -6,20 +6,7 @@
 
 ---
 
-## 📌 สารบัญ (Table of Contents)
-1. [ข้อมูลโครงการ & ลิงก์ที่เกี่ยวข้อง (Project Overview & Links)](#1-ข้อมูลโครงการ--ลิงก์ที่เกี่ยวข้อง-project-overview--links)
-2. [วัตถุประสงค์และกลุ่มเป้าหมาย (Project Objectives & Target Audience)](#2-วัตถุประสงค์และกลุ่มเป้าหมาย-project-objectives--target-audience)
-3. [เทคโนโลยีที่เลือกใช้ (Technology Stack)](#3-เทคโนโลยีที่เลือกใช้-technology-stack)
-4. [ฟังก์ชันเด่นของเว็บไซต์ (Key Features)](#4-ฟังก์ชันเด่นของเว็บไซต์-key-features)
-5. [การนำดีไซน์จาก Figma มาใช้งาน (Design Implementation)](#5-การนำดีไซน์จาก-figma-มาใช้งาน-design-implementation)
-6. [การรองรับอุปกรณ์ต่าง ๆ และ Breakpoints (Responsive Design)](#6-การรองรับอุปกรณ์ต่าง-ๆ-และ-breakpoints-responsive-design)
-7. [ขั้นตอนการ Deploy, ปัญหาและแนวทางแก้ไข (Deployment & Challenges)](#7-ขั้นตอนการ-deploy-ปัญหาและแนวทางแก้ไข-deployment--challenges)
-8. [หลักฐานการทดสอบการแสดงผล (Responsive Testing Proof)](#8-หลักฐานการทดสอบการแสดงผล-responsive-testing-proof)
-9. [เอกสารและโครงสร้างการนำเสนอ (Presentation Slides & Outline)](#9-เอกสารและโครงสร้างการนำเสนอ-presentation-slides--outline)
-10. [รายงานการใช้งาน AI อย่างโปร่งใส (AI Usage Report)](#10-รายงานการใช้งาน-ai-อย่างโปร่งใส-ai-usage-report)
-11. [ข้อมูลผู้พัฒนา (Developer Information)](#11-ข้อมูลผู้พัฒนา-developer-information)
 
----
 
 ## 1. ข้อมูลโครงการ & ลิงก์ที่เกี่ยวข้อง (Project Overview & Links)
 

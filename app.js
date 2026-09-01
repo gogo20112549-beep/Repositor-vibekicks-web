@@ -310,6 +310,112 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileNavBackdrop) mobileNavBackdrop.addEventListener('click', closeMobileDrawer);
 
     // ----------------------------------------------------------------------
+    // 4. HEADER ACTION BUTTONS (Mail, Search, Profile) & MODALS
+    // ----------------------------------------------------------------------
+    const mailBtn = document.getElementById('mailBtn');
+    const searchBtn = document.getElementById('searchBtn');
+    const profileBtn = document.getElementById('profileBtn');
+    const searchBarWrapper = document.getElementById('searchBarWrapper');
+
+    const mailModal = document.getElementById('mailModal');
+    const mailModalClose = document.getElementById('mailModalClose');
+    const mailForm = document.getElementById('mailForm');
+
+    const profileModal = document.getElementById('profileModal');
+    const profileModalClose = document.getElementById('profileModalClose');
+    const profileForm = document.getElementById('profileForm');
+
+    const toastBadge = document.getElementById('toastNotification');
+    const toastText = document.getElementById('toastText');
+
+    let toastTimer = null;
+    const showToast = (message) => {
+        if (!toastBadge || !toastText) return;
+        toastText.textContent = message;
+        toastBadge.classList.remove('hidden');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toastBadge.classList.add('hidden');
+        }, 3500);
+    };
+
+    const openModal = (modal) => {
+        if (modal) {
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeModal = (modal) => {
+        if (modal) {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Mail Button -> Opens Support & Contact Modal
+    if (mailBtn) {
+        mailBtn.addEventListener('click', () => openModal(mailModal));
+    }
+    if (mailModalClose) {
+        mailModalClose.addEventListener('click', () => closeModal(mailModal));
+    }
+    if (mailModal) {
+        mailModal.addEventListener('click', (e) => {
+            if (e.target === mailModal) closeModal(mailModal);
+        });
+    }
+    if (mailForm) {
+        mailForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nameEl = document.getElementById('mailName');
+            const name = nameEl ? nameEl.value : 'User';
+            closeModal(mailModal);
+            mailForm.reset();
+            showToast(`Thank you ${name}! Message sent successfully to VIBEKICKS Support.`);
+        });
+    }
+
+    // Search Button -> Focus Search Bar with smooth scroll & pulse animation
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (searchInput) {
+                searchInput.focus();
+                if (searchBarWrapper) {
+                    searchBarWrapper.classList.add('search-highlight');
+                    setTimeout(() => {
+                        searchBarWrapper.classList.remove('search-highlight');
+                    }, 1500);
+                }
+            }
+        });
+    }
+
+    // Profile Button -> Opens Member Sign In Modal
+    if (profileBtn) {
+        profileBtn.addEventListener('click', () => openModal(profileModal));
+    }
+    if (profileModalClose) {
+        profileModalClose.addEventListener('click', () => closeModal(profileModal));
+    }
+    if (profileModal) {
+        profileModal.addEventListener('click', (e) => {
+            if (e.target === profileModal) closeModal(profileModal);
+        });
+    }
+    if (profileForm) {
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            closeModal(profileModal);
+            profileForm.reset();
+            showToast(`Welcome back! Successfully signed in to VIBEKICKS Member Club.`);
+        });
+    }
+
+    // ----------------------------------------------------------------------
     // 5. SPA TAB ROUTING
     // ----------------------------------------------------------------------
     const switchTab = (tabId) => {
