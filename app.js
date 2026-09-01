@@ -355,12 +355,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Global Functions for direct inline onclick reliability
+    window.openMailModal = (e) => {
+        if (e) e.preventDefault();
+        openModal(mailModal);
+    };
+
+    window.closeMailModal = (e) => {
+        if (e) e.preventDefault();
+        closeModal(mailModal);
+    };
+
+    window.focusSearchInput = (e) => {
+        if (e) e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (searchInput) {
+            searchInput.focus();
+            if (searchBarWrapper) {
+                searchBarWrapper.classList.add('search-highlight');
+                setTimeout(() => {
+                    searchBarWrapper.classList.remove('search-highlight');
+                }, 1500);
+            }
+        }
+    };
+
+    window.openProfileModal = (e) => {
+        if (e) e.preventDefault();
+        openModal(profileModal);
+    };
+
+    window.closeProfileModal = (e) => {
+        if (e) e.preventDefault();
+        closeModal(profileModal);
+    };
+
     // Mail Button -> Opens Support & Contact Modal
     if (mailBtn) {
-        mailBtn.addEventListener('click', () => openModal(mailModal));
+        mailBtn.addEventListener('click', window.openMailModal);
     }
     if (mailModalClose) {
-        mailModalClose.addEventListener('click', () => closeModal(mailModal));
+        mailModalClose.addEventListener('click', window.closeMailModal);
     }
     if (mailModal) {
         mailModal.addEventListener('click', (e) => {
@@ -380,26 +415,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Search Button -> Focus Search Bar with smooth scroll & pulse animation
     if (searchBtn) {
-        searchBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (searchInput) {
-                searchInput.focus();
-                if (searchBarWrapper) {
-                    searchBarWrapper.classList.add('search-highlight');
-                    setTimeout(() => {
-                        searchBarWrapper.classList.remove('search-highlight');
-                    }, 1500);
-                }
-            }
-        });
+        searchBtn.addEventListener('click', window.focusSearchInput);
     }
 
     // Profile Button -> Opens Member Sign In Modal
     if (profileBtn) {
-        profileBtn.addEventListener('click', () => openModal(profileModal));
+        profileBtn.addEventListener('click', window.openProfileModal);
     }
     if (profileModalClose) {
-        profileModalClose.addEventListener('click', () => closeModal(profileModal));
+        profileModalClose.addEventListener('click', window.closeProfileModal);
     }
     if (profileModal) {
         profileModal.addEventListener('click', (e) => {
